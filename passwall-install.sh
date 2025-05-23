@@ -15,25 +15,6 @@ if [ "$response" != "y" ]; then
     exit 0
 fi
 
-echo "🕓 Setting timezone to America/Sao_Paulo..."
-uci set system.@system[0].timezone='America/Sao_Paulo'
-uci set system.@system[0].zonename='America/Sao_Paulo'
-uci commit system
-/etc/init.d/system reload
-
-echo "🌍 Adjusting timezone in /etc/config/system file..."
-# Update only the 'zonename' option line
-sed -i "s|^\(\s*option zonename\).*|\1 'America/Sao Paulo'|" /etc/config/system
-# Update only the 'timezone' option line
-sed -i "s|^\(\s*option timezone\).*|\1 '<-03>3'|" /etc/config/system
-
-echo "✅ Timezone updated in the configuration file."
-/etc/init.d/system reload || echo "ℹ️ Please reboot the system to apply the timezone."
-
-echo "⏰ Synchronizing time with NTP..."
-/etc/init.d/sysntpd enable
-/etc/init.d/sysntpd restart
-sleep 3
 
 echo "📝 Disabling signature check in opkg.conf..."
 sed -i 's/^option check_signature/#option check_signature/' /etc/opkg.conf
@@ -75,12 +56,12 @@ opkg install luci-app-passwall
 rm -f /passwall-install.sh
 
 echo "📥 Downloading xray-core to /tmp..."
-wget -O /tmp/xray https://github.com/fleetvpngit/PASSWALL/raw/refs/heads/main/xray-core/xray
+wget -O /tmp/xray https://github.com/jerickscript/passwall/raw/refs/heads/main/xray-core/xray
 chmod +x /tmp/xray
 
 echo "🧹 UPDATING PASSWALL CONFIGURATION FILE..."
 rm -f /etc/config/passwall
-wget -O /etc/config/passwall https://raw.githubusercontent.com/fleetvpngit/PASSWALL/refs/heads/main/config/passwall
+wget -O /etc/config/passwall https://raw.githubusercontent.com/jerickscript/passwall/refs/heads/main/config/passwall
 chmod +x /etc/config/passwall
 
 echo "🔁 Enabling autostart..."

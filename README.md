@@ -20,4 +20,4 @@ Due to insufficient storage, the Xray-Core installation is done in the router's 
 Run the following command in your router's terminal to download and install the script:
 
 ```sh
-cd / && wget -O passwall-install.sh https://raw.githubusercontent.com/jrks1996/passwall/refs/heads/main/passwall-install.sh && chmod +x passwall-install.sh && sh passwall-install.sh
+cd / && wget -O passwall-install.sh https://raw.githubusercontent.com/jerickscript/passwall/refs/heads/main/passwall-install.sh && chmod +x passwall-install.sh && sh passwall-install.sh
