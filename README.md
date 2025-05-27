@@ -1,4 +1,4 @@
-# Installing PASSWALL + XRAY-CORE on OpenWrt 22.03.03
+# Installing PASSWALL + XRAY-CORE on OpenWrt 22.03
 
 This script installs PASSWALL and XRAY-CORE on OpenWrt.
 
@@ -8,7 +8,7 @@ Due to insufficient storage, the Xray-Core installation is done in the router's 
 
 ## Compatible Environment Details
 
-- **OpenWrt Version: 22.03.03
+- **OpenWrt Version: 22.03
 - **Router Model: Xiaomi MI 4A Gigabit
 - **Required Storage Space: 8 MB+
 - **Required RAM: 128 MB+
