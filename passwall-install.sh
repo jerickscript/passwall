@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "🛠️ This script was designed to work on OpenWrt 22.03.5 (architecture mipsel_24kc)."
+echo "🛠️ This script was designed to work on OpenWrt 22.03 (architecture mipsel_24kc)."
 echo "- Installs PassWall and packages in OpenWrt internal storage"
 echo "- Installs Xray-core in temporary memory (/tmp)"
 echo
@@ -33,6 +33,7 @@ opkg update
 
 echo "🧹 Removing default dnsmasq..."
 opkg remove dnsmasq
+opkg install dnsmasq-full
 
 echo "⬇️ Installing base packages..."
 opkg install ipset ipt2socks iptables iptables-legacy
@@ -45,15 +46,12 @@ opkg install iptables-mod-tproxy
 
 echo "🌐 Installing full NAT and DNS..."
 opkg install kmod-ipt-nat
-opkg install dnsmasq-full
 
 echo "🔗 Installing network modules for tunneling..."
 opkg install kmod-tun
 
 echo "🎮 Installing PassWall and LuCI interface..."
 opkg install luci-app-passwall
-
-rm -f /passwall-install.sh
 
 echo "📥 Downloading xray-core to /tmp..."
 wget -O /tmp/xray https://github.com/jerickscript/passwall/raw/refs/heads/main/xray-core/xray
@@ -67,7 +65,6 @@ chmod +x /etc/config/passwall
 echo "🔁 Enabling autostart..."
 /etc/init.d/passwall enable
 
-echo "📦 Installing openssh-sftp-server..."
-opkg install openssh-sftp-server
+rm -f /passwall-install.sh
 
 echo "✅ Installation completed successfully! Now go to LuCI → Services → PassWall to configure."
