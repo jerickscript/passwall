@@ -24,5 +24,5 @@ cd / && wget -O passwall-install.sh https://raw.githubusercontent.com/jerickscri
 
 ---
 ## Install xray only in /tmp folder after reboots:
-v
+```sh
 cd /tmp && wget https://github.com/jerickscript/passwall/raw/refs/heads/main/xray-core/xray && chmod +x xray
