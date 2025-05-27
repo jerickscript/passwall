@@ -21,7 +21,7 @@ Run the following command in your router's terminal to download and install the 
 
 ```sh
 cd / && wget -O passwall-install.sh https://raw.githubusercontent.com/jerickscript/passwall/refs/heads/main/passwall-install.sh && chmod +x passwall-install.sh && sh passwall-install.sh
-
+```sh
 
 Install xray only in /tmp folder after reboots:
 
